@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guía Interactiva GPC — Tema 2 (Tuckman y Conflictos) y Tema 3 (Valor Ganado EVM)</title>
-  <meta name="description" content="Aplicación web interactiva de estudio para Gerencia de Proyectos: Tema 2 (Modelo de Tuckman y gestión de conflictos) y Tema 3 (Método del Valor Ganado EVM con caso EduConecta 360, simulador y práctica de examen)." />
+  <title>Guía Interactiva GPC — Temas 1, 2 y 3 (Adquisiciones, Tuckman y Valor Ganado EVM)</title>
+  <meta name="description" content="Guía interactiva completa de Gerencia de Proyectos en Computación: Tema 1 (Control de adquisiciones y contratos), Tema 2 (Modelo de Tuckman y conflictos) y Tema 3 (Método del Valor Ganado EVM con caso EduConecta 360)." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Guía Interactiva GPC — Tuckman, Conflictos y Valor Ganado (EVM)" />
-  <meta property="og:description" content="Domina el Modelo de Tuckman, las técnicas de resolución de conflictos PMBOK y el Método del Valor Ganado (EVM) con calculadora, caso EduConecta 360 y modo práctica de examen." />
+  <meta property="og:title" content="Guía Interactiva GPC — Adquisiciones, Tuckman y Valor Ganado (EVM)" />
+  <meta property="og:description" content="Prepara tu examen de Gerencia de Proyectos: Tema 1 (Adquisiciones y T&M), Tema 2 (Tuckman y conflictos) y Tema 3 (EVM), con simuladores, caso EduConecta 360 y modo práctica." />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B0F17'/%3E%3Crect x='4' y='19' width='3.8' height='8' rx='1.9' fill='%232563EB'/%3E%3Crect x='9.5' y='15' width='3.8' height='12' rx='1.9' fill='%23DC2626'/%3E%3Crect x='15' y='11' width='3.8' height='16' rx='1.9' fill='%230D9488'/%3E%3Crect x='20.5' y='6' width='3.8' height='21' rx='1.9' fill='%23059669'/%3E%3Crect x='26' y='13' width='3.8' height='14' rx='1.9' fill='%237C3AED'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -193,10 +193,10 @@
     .brand-dots span:nth-child(4) { height: 21px; background: var(--s4); }
     .brand-dots span:nth-child(5) { height: 15px; background: var(--s5); }
 
-    /* Module Segmented Switcher */
+    /* Module Segmented Switcher (3 Topics) */
     .module-switcher {
       display: inline-grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, auto));
       gap: 4px;
       padding: 4px;
       border-radius: 14px;
@@ -207,18 +207,18 @@
     .module-tab {
       min-height: 40px;
       min-width: 0;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 10px;
       border: none;
       background: transparent;
       color: var(--ink-secondary);
-      font-size: 0.84rem;
+      font-size: 0.81rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
+      gap: 6px;
       transition: all 0.2s ease;
       white-space: nowrap;
     }
@@ -231,12 +231,14 @@
     }
     .module-tab .mod-badge {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.69rem;
       font-weight: 800;
       padding: 2px 6px;
       border-radius: 6px;
       color: #fff;
+      flex-shrink: 0;
     }
+    .module-tab[data-module="tema-1"] .mod-badge { background: var(--amber); }
     .module-tab[data-module="tema-2"] .mod-badge { background: var(--s1); }
     .module-tab[data-module="tema-3"] .mod-badge { background: var(--s4); }
     [data-theme="dark"] .module-tab .mod-badge { color: #0B0F17; }
@@ -1915,6 +1917,171 @@
       align-items: center;
     }
 
+    /* ==========================================================================
+       8B. TEMA 1 — CONTROL DE ADQUISICIONES Y PROVEEDORES
+       ========================================================================== */
+    .hero-adq {
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 0%, rgba(217, 119, 6, 0.08), transparent 65%),
+        radial-gradient(ellipse 60% 50% at 85% 5%, rgba(220, 38, 38, 0.05), transparent 65%);
+    }
+    [data-theme="dark"] .hero-adq {
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 0%, rgba(251, 191, 36, 0.12), transparent 65%),
+        radial-gradient(ellipse 60% 50% at 85% 5%, rgba(248, 113, 113, 0.08), transparent 65%);
+    }
+    .hero-adq h1 span.gradient-text-adq {
+      background: linear-gradient(120deg, var(--amber) 0%, var(--s2) 55%, var(--s5) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contract-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .contract-tab {
+      min-height: 48px;
+      padding: 13px 15px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--ink-secondary);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .contract-tab:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+    .contract-tab.active {
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: var(--shadow-md);
+      border-width: 2px;
+    }
+    .contract-tab .ct-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .contract-tab strong { display: block; font-size: 0.94rem; color: var(--ink); }
+    .contract-tab span.ct-sub { font-size: 0.77rem; color: var(--ink-muted); }
+
+    .risk-spectrum-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+    }
+    .spectrum-bar {
+      height: 14px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--s4) 0%, var(--amber) 50%, var(--s2) 100%);
+      position: relative;
+      margin: 14px 0 8px 0;
+    }
+    .spectrum-marker {
+      position: absolute;
+      top: 50%;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 4px solid var(--ink);
+      transform: translate(-50%, -50%);
+      transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: var(--shadow-md);
+    }
+    .spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--ink-muted);
+      gap: 8px;
+    }
+
+    .adq-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .adq-tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .adq-tool-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .adq-tool-card h4 { margin: 0 0 6px 0; font-size: 0.92rem; color: var(--ink); }
+    .adq-tool-card p { margin: 0; font-size: 0.81rem; color: var(--ink-secondary); line-height: 1.45; }
+
+    .hours-stack {
+      display: flex;
+      height: 36px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 12px 0 10px 0;
+      background: var(--bg-subtle);
+    }
+    .hours-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: width 0.35s ease;
+    }
+    [data-theme="dark"] .hours-seg { color: #0B0F17; }
+    .hours-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--ink-secondary);
+    }
+    .hours-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .hours-legend i {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .audit-inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
     footer {
       padding: 34px 0 46px 0;
       text-align: center;
@@ -1939,6 +2106,8 @@
       .kpi-grid, .evm-vars-grid, .mnemonic-rules, .evm-inputs-grid, .practice-vars-strip {
         grid-template-columns: repeat(2, 1fr);
       }
+      .adq-tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .audit-inputs-grid { grid-template-columns: repeat(2, 1fr); }
       .formula-grid, .evm-kpis-6 { grid-template-columns: repeat(2, 1fr); }
       .stage-selector-bar { grid-template-columns: repeat(3, 1fr); }
       .cheatsheet-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1962,6 +2131,7 @@
       .module-switcher {
         order: 3;
         width: 100%;
+        grid-template-columns: repeat(3, 1fr);
       }
       .module-tab {
         min-height: 44px;
@@ -1987,14 +2157,15 @@
       }
       .explorer-toolbar, .stage-selector-bar { padding: 14px; }
       .kpi-grid, .evm-vars-grid, .mnemonic-rules, .formula-grid, .evm-inputs-grid,
-      .evm-kpis-6, .practice-vars-strip, .practice-inputs-grid,
+      .evm-kpis-6, .practice-vars-strip, .practice-inputs-grid, .contract-tabs,
+      .adq-tools-grid, .audit-inputs-grid,
       .stage-selector-bar, .hb-quadrant-grid, .cheatsheet-grid {
         grid-template-columns: 1fr;
       }
       .hero-cta-row a, .hero-cta-row button, .practice-actions button { width: 100%; }
       .formula-eq { font-size: 1.08rem; }
       .evm-kpi-val { font-size: 1.24rem; }
-      .module-tab { font-size: 0.78rem; padding: 6px 6px; gap: 5px; white-space: normal; line-height: 1.2; text-align: center; }
+      .module-tab { font-size: 0.74rem; padding: 6px 4px; gap: 4px; white-space: normal; line-height: 1.15; text-align: center; }
       .tab-full { display: none; }
       .tab-short { display: inline; }
       code { word-break: break-word; }
@@ -2002,7 +2173,7 @@
 
     @media print {
       .topbar, .progress-bar, .playback-controls, .event-deck, .diag-presets,
-      #quiz, #evm-practica, .hero-cta-row, .evm-presets {
+      #quiz, #adq-quiz, #evm-practica, .hero-cta-row, .evm-presets {
         display: none !important;
       }
       body { background: #fff !important; color: #000 !important; font-size: 10pt; }
@@ -2030,10 +2201,16 @@
           <span>Guía GPC · Examen</span>
         </a>
 
-        <!-- Always-accessible Module Switcher -->
+        <!-- Always-accessible 3-Topic Module Switcher -->
         <div class="module-switcher" role="tablist" aria-label="Cambiar de tema de estudio">
-          <button type="button" class="module-tab active" role="tab" id="tabBtnTema2"
-            data-module="tema-2" aria-selected="true" onclick="switchModule('tema-2', true)">
+          <button type="button" class="module-tab active" role="tab" id="tabBtnTema1"
+            data-module="tema-1" aria-selected="true" onclick="switchModule('tema-1', true)">
+            <span class="mod-badge">T1</span>
+            <span class="tab-full">Adquisiciones</span>
+            <span class="tab-short">Contratos</span>
+          </button>
+          <button type="button" class="module-tab" role="tab" id="tabBtnTema2"
+            data-module="tema-2" aria-selected="false" onclick="switchModule('tema-2', true)">
             <span class="mod-badge">T2</span>
             <span class="tab-full">Tuckman y Conflictos</span>
             <span class="tab-short">Tuckman</span>
@@ -2060,7 +2237,15 @@
     <!-- Dynamic In-Module Anchor Bar -->
     <div class="subnav-wrap">
       <div class="container">
-        <nav class="nav-links" id="subnavTema2" aria-label="Secciones Tema 2">
+        <nav class="nav-links" id="subnavTema1" aria-label="Secciones Tema 1">
+          <a href="#adq-contratos">Tipos de Contratos</a>
+          <a href="#adq-herramientas">Control PMBOK §12.3</a>
+          <a href="#adq-caso">Caso EduConecta (P1)</a>
+          <a href="#adq-simulador">Auditoría T&amp;M</a>
+          <a href="#adq-quiz">Quiz Adquisiciones</a>
+        </nav>
+
+        <nav class="nav-links" id="subnavTema2" style="display:none;" aria-label="Secciones Tema 2">
           <a href="#fundamentos">Fundamentos</a>
           <a href="#etapas">5 Etapas</a>
           <a href="#simulador">No Linealidad</a>
@@ -2085,9 +2270,313 @@
   </header>
 
   <!-- ========================================================================
+       MÓDULO 0 — TEMA 1: CONTROL DE ADQUISICIONES Y PROVEEDORES (PMBOK® CAP. 12)
+       ======================================================================== -->
+  <main id="view-tema-1" class="module-view active" role="tabpanel" aria-labelledby="tabBtnTema1">
+    <!-- HERO TEMA 1 -->
+    <section class="hero hero-adq" id="adq-inicio">
+      <div class="container">
+        <div class="hero-top">
+          <div class="hero-pill">
+            <span class="dot" style="background:var(--amber); box-shadow:0 0 0 3px var(--amber-soft);"></span>
+            TEMA 1 · CONTROL DE ADQUISICIONES Y PROVEEDORES · GUÍA DEL PMBOK® 6.ª ED. (§12.1 Y §12.3)
+          </div>
+          <h1>Control de Adquisiciones: <span class="gradient-text-adq">blindar contratos, horas y evidencias</span></h1>
+          <p class="hero-subtitle">
+            Cuando tercerizas pruebas, desarrollo o infraestructura, un contrato mal controlado dispara el gasto (<code>AC</code>) sin entregar valor real (<code>EV</code>). Domina aquí los <strong>tipos de contrato</strong>, quién asume el riesgo, las <strong>herramientas de PMBOK® §12.3</strong> y cómo responder la <strong>Pregunta 1 de «EduConecta 360»</strong> con acciones concretas y evidencias exigibles.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#adq-contratos" class="btn-primary">Tipos de contratos y riesgo ↓</a>
+            <a href="#adq-caso" class="btn-secondary">Caso EduConecta (Pregunta 1)</a>
+            <a href="#adq-simulador" class="btn-secondary">Simulador de auditoría T&amp;M</a>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-val" style="color:var(--amber)">3 familias</div>
+            <div class="kpi-label"><strong>Precio Fijo</strong>, <strong>Costos Reembolsables</strong> y el híbrido <strong>Tiempo y Materiales (T&amp;M)</strong>.</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-val" style="color:var(--s2)">Riesgo en T&amp;M</div>
+            <div class="kpi-label">En Tiempo y Materiales, el <strong>riesgo de sobrecosto lo asume el comprador</strong> si no controla horas.</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-val" style="color:var(--s1)">Acción + Evidencia</div>
+            <div class="kpi-label">En examen nunca des ideas vagas: cada acción debe exigir <strong>un registro objetivo verificable</strong>.</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-val" style="color:var(--s4)">PMBOK® §12.3</div>
+            <div class="kpi-label"><em>Controlar las Adquisiciones</em>: inspecciones, auditorías, análisis de datos y reclamos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.1 TIPOS DE CONTRATOS Y ESPECTRO DE RIESGO -->
+    <section id="adq-contratos">
+      <div class="container">
+        <div class="section-eyebrow">01 · Tipos de Contrato (PMBOK® §12.1.1.6)</div>
+        <h2 class="section-title">¿Quién asume el riesgo de costo en cada contrato?</h2>
+        <p class="section-lead">
+          El PMBOK agrupa todos los acuerdos en dos grandes categorías y un híbrido clave. Selecciona cada tipo para ver cómo se desplaza el riesgo financiero entre <strong>vendedor (proveedor)</strong> y <strong>comprador (cliente)</strong>.
+        </p>
+
+        <div class="contract-tabs" id="contractTabs" role="tablist" aria-label="Familias de contrato PMBOK"></div>
+
+        <div class="risk-spectrum-card">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px;">
+            <strong style="font-size:0.9rem;">Espectro de riesgo de costo para el COMPRADOR (Cliente / NovaTech)</strong>
+            <span id="spectrumRiskBadge" class="tl-pill tl-amber">Riesgo Medio–Alto (Comprador)</span>
+          </div>
+          <div class="spectrum-bar" aria-hidden="true">
+            <div class="spectrum-marker" id="spectrumMarker" style="left:55%;"></div>
+          </div>
+          <div class="spectrum-labels">
+            <span>◀ Menor riesgo comprador (Precio Fijo)</span>
+            <span>Híbrido (T&amp;M)</span>
+            <span>Mayor riesgo comprador (Reembolsable) ▶</span>
+          </div>
+        </div>
+
+        <div class="card" id="contractDetailCard"></div>
+
+        <div class="callout callout-amber">
+          <div class="callout-title">⚡ Regla de oro para identificar contratos Tiempo y Materiales (T&amp;M) en examen</div>
+          <p>
+            Un contrato <strong>T&amp;M</strong> fija la <strong>tarifa por hora</strong> (como Precio Fijo), pero deja abierta la <strong>cantidad de horas</strong> (como Costos Reembolsables). Sin control semanal frente al <strong>techo máximo (NTE — Not-to-Exceed)</strong> y sin validar evidencias antes de pagar, el proveedor puede facturar ineficiencias o retrabajos y el sobrecosto lo paga íntegramente el comprador.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.2 HERRAMIENTAS PMBOK §12.3 + PLANTILLA DE EXAMEN -->
+    <section id="adq-herramientas">
+      <div class="container">
+        <div class="section-eyebrow">02 · Herramientas de Controlar las Adquisiciones (PMBOK® §12.3)</div>
+        <h2 class="section-title">Cómo controlar a un proveedor con respaldo técnico y legal</h2>
+        <p class="section-lead">
+          Controlar las Adquisiciones (p. 492 PMBOK® 6.ª Ed.) monitorea que tanto comprador como vendedor cumplan el contrato. Estas son las <strong>5 herramientas clave</strong> y la fórmula exacta para redactar respuestas de examen con puntaje completo.
+        </p>
+
+        <div class="adq-tools-grid">
+          <div class="adq-tool-card">
+            <span class="adq-tool-num">01 · INSPECCIÓN</span>
+            <h4>Verificar el entregable real</h4>
+            <p>Revisión estructurada del trabajo del proveedor frente a criterios de aceptación y tickets de prueba reales.</p>
+          </div>
+          <div class="adq-tool-card">
+            <span class="adq-tool-num">02 · AUDITORÍAS</span>
+            <h4>Cruzar facturas vs. respaldo</h4>
+            <p>Auditar hojas de tiempo (<em>timesheets</em>), evidencias de ejecución y cumplimiento estricto de cláusulas.</p>
+          </div>
+          <div class="adq-tool-card">
+            <span class="adq-tool-num">03 · ANÁLISIS DE DATOS</span>
+            <h4>Desempeño, EVM y tendencias</h4>
+            <p>Comparar horas quemadas vs. techo contractual y vigilar su efecto directo en el <code>AC</code> y el <code>CPI</code>.</p>
+          </div>
+          <div class="adq-tool-card">
+            <span class="adq-tool-num">04 · RECLAMACIONES</span>
+            <h4>Disputas con pruebas</h4>
+            <p>Gestionar cobros objetados, retrabajos y acusaciones de demora con bitácoras fechadas, no con discusiones verbales.</p>
+          </div>
+          <div class="adq-tool-card">
+            <span class="adq-tool-num">05 · CONTROL DE CAMBIOS</span>
+            <h4>Aprobación escrita previa</h4>
+            <p>Ninguna hora extraordinaria, reprueba adicional ni ampliación de techo es válida sin autorización escrita <strong>previa</strong>.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="realm-badge" style="background:var(--s4-soft); color:var(--s4);">PLANTILLA MENTAL PARA RESPONDER PREGUNTA 1 EN EXAMEN</span>
+          <h3 style="margin:0 0 12px 0; font-size:1.14rem;">Estructura ganadora: Acción concreta + Sustento contractual + Evidencia exigida</h3>
+          <div class="grid-3">
+            <div class="bento-card">
+              <h4>1. Acción concreta</h4>
+              <p>Qué medida inmediata aplicas sobre la factura actual o sobre el control futuro (ej.: <em>auditar, retener horas sin respaldo, controlar techo semanal</em>).</p>
+            </div>
+            <div class="bento-card">
+              <h4>2. Sustento contractual</h4>
+              <p>Por qué es crítica según el contrato (ej.: <em>en T&amp;M el riesgo de costo lo asume el comprador; sin verificación el gasto sube sin avance</em>).</p>
+            </div>
+            <div class="bento-card">
+              <h4>3. Evidencia exigida</h4>
+              <p>Qué documentos concretos pides para autorizar pagos o cerrar reclamos (ej.: <em>timesheets por recurso/tarea + logs QA + aprobaciones escritas + bitácora</em>).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.3 CASO RESUELTO PASO A PASO: EDUCONECTA 360 — PREGUNTA 1 -->
+    <section id="adq-caso">
+      <div class="container">
+        <div class="section-eyebrow">03 · Caso Resuelto Paso a Paso (Pregunta 1)</div>
+        <h2 class="section-title">Caso «EduConecta 360»: NovaTech vs. QualityLab</h2>
+        <p class="section-lead">
+          El proveedor externo <strong>QualityLab</strong> realiza pruebas funcionales y de integración bajo contrato de <strong>Tiempo y Materiales</strong> con techo de <strong>1,200 horas</strong> (horas extraordinarias sujetas a aprobación previa). En el último mes facturó <strong>360 horas</strong> con serias alertas de control.
+        </p>
+
+        <!-- Visual Breakdown of the 360h Invoice -->
+        <div class="card" style="margin-bottom:20px;">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+            <div>
+              <span class="realm-badge" style="background:var(--s2-soft); color:var(--s2); margin-bottom:4px;">RADIOGRAFÍA DE LA FACTURA MENSUAL (360 HORAS)</span>
+              <h3 style="margin:0; font-size:1.1rem;">¿Por qué NO se debe aprobar el pago completo de 360 horas?</h3>
+            </div>
+            <button type="button" class="btn-secondary" onclick="loadAuditPresetAndScroll('educonecta')">Simular en Auditoría T&amp;M ↓</button>
+          </div>
+
+          <div class="hours-stack" role="img" aria-label="Desglose de 360 horas: 170 válidas netas, 70 retrabajo en revisión, 120 sin respaldo">
+            <div class="hours-seg" style="width:47.2%; background:var(--s4);">170 h válidas</div>
+            <div class="hours-seg" style="width:19.5%; background:var(--amber);">70 h retrabajo</div>
+            <div class="hours-seg" style="width:33.3%; background:var(--s2);">120 h sin sustento</div>
+          </div>
+
+          <div class="hours-legend">
+            <span><i style="background:var(--s4)"></i> 170 h sustentadas sin observación (47.2 %)</span>
+            <span><i style="background:var(--amber)"></i> 70 h repetición de pruebas por defectos ya declarados corregidos (19.5 %)</span>
+            <span><i style="background:var(--s2)"></i> 120 h facturadas sin registro ni evidencia (33.3 % — retener pago)</span>
+          </div>
+        </div>
+
+        <!-- Two Complete Exam Actions -->
+        <div class="grid-2">
+          <div class="card" style="border-top:4px solid var(--s2);">
+            <span class="stage-pill-badge" style="background:var(--s2-soft); color:var(--s2); border:1px solid var(--s2-border); margin-bottom:10px;">
+              ACCIÓN 1 · AUDITORÍA DE FACTURA ACTUAL
+            </span>
+            <h3 style="margin:0 0 8px 0; font-size:1.12rem;">Auditar las 360 h y pagar solo horas válidas</h3>
+            <p style="margin:0 0 12px 0; font-size:0.9rem; color:var(--ink-secondary);">
+              Auditar la factura de <strong>360 horas</strong> y aprobar únicamente el pago de las horas sustentadas y válidas, <strong>reteniendo las 120 h sin respaldo</strong> y <strong>revisando las 70 h de retrabajo</strong> por defectos que QualityLab ya había dado por corregidos. En un contrato de <em>Tiempo y Materiales</em> el riesgo de costo lo asume NovaTech: sin verificación real, el gasto sube sin avance.
+            </p>
+            <div style="padding:12px 14px; border-radius:12px; background:var(--bg); border:1px solid var(--border); font-size:0.86rem;">
+              <strong style="display:block; margin-bottom:4px; color:var(--ink);">📎 Evidencia exigida:</strong>
+              <span style="color:var(--ink-secondary);">Hojas de tiempo (<em>timesheets</em>) detalladas por recurso y tarea, cruzadas con <strong>registros de ejecución</strong> y <strong>tickets de defectos</strong> en el sistema de QA.</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:4px solid var(--amber);">
+            <span class="stage-pill-badge" style="background:var(--amber-soft); color:var(--amber); border:1px solid var(--amber-border); margin-bottom:10px;">
+              ACCIÓN 2 · CONTROL PREVENTIVO DEL TECHO
+            </span>
+            <h3 style="margin:0 0 8px 0; font-size:1.12rem;">Seguimiento semanal vs. 1,200 h + bitácora viva</h3>
+            <p style="margin:0 0 12px 0; font-size:0.9rem; color:var(--ink-secondary);">
+              Controlar <strong>cada semana</strong> el consumo acumulado frente al techo de <strong>1,200 horas</strong> y exigir <strong>aprobación escrita previa</strong> para cualquier hora extraordinaria o reprueba. Además, registrar las demoras del equipo interno <em>apenas ocurran</em> (no al cierre del mes) para evitar que sirvan de excusa sin sustento.
+            </p>
+            <div style="padding:12px 14px; border-radius:12px; background:var(--bg); border:1px solid var(--border); font-size:0.86rem;">
+              <strong style="display:block; margin-bottom:4px; color:var(--ink);">📎 Evidencia exigida:</strong>
+              <span style="color:var(--ink-secondary);">Reporte semanal de <strong>horas consumidas vs. techo (1,200 h)</strong>, <strong>aprobaciones escritas</strong> del director de proyecto para horas extra y <strong>bitácora compartida de bloqueos con fecha</strong>.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-title">🔗 Cómo se conectan los 3 temas en EduConecta 360</div>
+          <p>
+            <strong>Tema 1 (Adquisiciones):</strong> las horas sin sustento ni control inflaron el gasto real → <strong>Tema 2 (Tuckman):</strong> los reclamos escalaron a culpas mutuas (<em>Turbulencia</em>) → <strong>Tema 3 (EVM):</strong> el <code>AC</code> subió a S/ 400,000 con un <code>EV</code> de S/ 350,000, hundiendo el <code>CPI</code> a <code>0.875</code>.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+            <button type="button" class="ctrl-btn" onclick="switchModule('tema-2', true, '#conflictos')">Ver Tema 2: Conflictos →</button>
+            <button type="button" class="ctrl-btn" onclick="switchModule('tema-3', true, '#evm-caso')">Ver Tema 3: EVM →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.4 SIMULADOR INTERACTIVO DE AUDITORÍA DE FACTURA T&M Y TECHO NTE -->
+    <section id="adq-simulador">
+      <div class="container">
+        <div class="section-eyebrow">04 · Simulador Práctico de Control T&amp;M</div>
+        <h2 class="section-title">Simulador de auditoría de factura y techo contractual (NTE)</h2>
+        <p class="section-lead">
+          Experimenta cuánto dinero protege una auditoría de horas en un contrato Tiempo y Materiales y qué tan cerca está el proyecto de romper su techo máximo (<code>NTE</code>).
+        </p>
+
+        <div class="evm-calc-shell">
+          <div class="evm-presets" role="group" aria-label="Escenarios de auditoría T&M">
+            <button type="button" class="evm-preset-btn active" data-audit-preset="educonecta" onclick="applyAuditPreset('educonecta')">📘 Caso EduConecta 360</button>
+            <button type="button" class="evm-preset-btn" data-audit-preset="clean" onclick="applyAuditPreset('clean')">🟢 Proveedor controlado</button>
+            <button type="button" class="evm-preset-btn" data-audit-preset="danger" onclick="applyAuditPreset('danger')">🔴 Riesgo de romper techo</button>
+          </div>
+
+          <div class="audit-inputs-grid">
+            <div class="evm-input-card">
+              <div class="evm-input-label"><span>Techo contractual (NTE)</span><span>horas</span></div>
+              <input type="number" class="evm-num-input" id="audCap" value="1200" min="100" step="50" inputmode="numeric" />
+            </div>
+            <div class="evm-input-card">
+              <div class="evm-input-label"><span>Horas acumuladas previas</span><span>horas</span></div>
+              <input type="number" class="evm-num-input" id="audPrev" value="600" min="0" step="20" inputmode="numeric" />
+            </div>
+            <div class="evm-input-card">
+              <div class="evm-input-label"><span>Tarifa pactada</span><span>S/ por hora</span></div>
+              <input type="number" class="evm-num-input" id="audRate" value="150" min="20" step="10" inputmode="numeric" />
+            </div>
+            <div class="evm-input-card">
+              <div class="evm-input-label"><span style="color:var(--s1)">Horas facturadas este mes</span><span>horas</span></div>
+              <input type="number" class="evm-num-input" id="audBilled" value="360" min="10" step="10" inputmode="numeric" />
+            </div>
+            <div class="evm-input-card">
+              <div class="evm-input-label"><span style="color:var(--s4)">Horas con sustento QA</span><span>horas</span></div>
+              <input type="number" class="evm-num-input" id="audBacked" value="240" min="0" step="10" inputmode="numeric" />
+            </div>
+            <div class="evm-input-card">
+              <div class="evm-input-label"><span style="color:var(--amber)">Retrabajo del proveedor</span><span>horas</span></div>
+              <input type="number" class="evm-num-input" id="audRework" value="70" min="0" step="5" inputmode="numeric" />
+            </div>
+          </div>
+
+          <div class="evm-kpis-6" id="auditKpiGrid"></div>
+
+          <div class="card" style="background:var(--bg); margin-bottom:16px;">
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px;">
+              <strong style="font-size:0.9rem;">Desglose visual de la factura auditada y consumo del techo NTE</strong>
+              <span id="auditCapPctBadge" class="tl-pill tl-amber">0 % consumido</span>
+            </div>
+            <div class="hours-stack" id="auditStackBar"></div>
+            <div class="hours-legend" id="auditStackLegend"></div>
+
+            <div style="margin-top:16px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; margin-bottom:5px;">
+                <span>Consumo acumulado vs. Techo contractual (NTE)</span>
+                <span id="auditCapNumbers" style="font-family:var(--font-mono);"></span>
+              </div>
+              <div class="metric-bar" style="height:12px;">
+                <div class="metric-bar-fill" id="auditCapBar" style="width:0%; background:var(--amber);"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pitch-box" style="margin-top:0; border-left-color:var(--amber); border-color:var(--amber-border);">
+            <div class="pitch-box-head">
+              <span class="stage-pill-badge" style="background:var(--amber-soft); color:var(--amber); border:1px solid var(--amber-border);">
+                DICTAMEN DE AUDITORÍA AUTOMÁTICO
+              </span>
+            </div>
+            <p class="pitch-text" id="auditVerdictText"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.5 QUIZ RÁPIDO TEMA 1 -->
+    <section id="adq-quiz">
+      <div class="container">
+        <div class="section-eyebrow">05 · Autoevaluación Tema 1</div>
+        <h2 class="section-title">Quiz de examen: Control de Adquisiciones y Contratos</h2>
+        <p class="section-lead">
+          Cinco preguntas situacionales centradas en contratos T&amp;M, riesgos comprador/vendedor, evidencias de auditoría y control de cambios PMBOK® §12.3.
+        </p>
+        <div class="quiz-shell" id="adqQuizShell"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
        MÓDULO 1 — TEMA 2: MODELO DE TUCKMAN Y GESTIÓN DE CONFLICTOS
        ======================================================================== -->
-  <main id="view-tema-2" class="module-view active" role="tabpanel" aria-labelledby="tabBtnTema2">
+  <main id="view-tema-2" class="module-view" role="tabpanel" aria-labelledby="tabBtnTema2">
     <!-- HERO TEMA 2 -->
     <section class="hero" id="inicio">
       <div class="container">
@@ -3240,13 +3729,13 @@
 
   <footer>
     <div class="container">
-      Guía interactiva unificada de <strong>Gerencia de Proyectos en Computación</strong> · <strong>Tema 2</strong> (Modelo de Tuckman y Gestión de Conflictos) &amp; <strong>Tema 3</strong> (Método del Valor Ganado — EVM).
+      Guía interactiva unificada de <strong>Gerencia de Proyectos en Computación</strong> · <strong>Tema 1</strong> (Control de Adquisiciones y Proveedores), <strong>Tema 2</strong> (Modelo de Tuckman y Conflictos) &amp; <strong>Tema 3</strong> (Método del Valor Ganado — EVM).
       <br />Aplicación HTML autocontenida · Optimizada para PC, móvil, estudio offline e impresión PDF.
     </div>
   </footer>
 
   <!-- ========================================================================
-       UNIFIED INTERACTIVE ENGINE (TEMA 2 + TEMA 3 + NAVIGATION + PERSISTENCE)
+       UNIFIED INTERACTIVE ENGINE (TEMA 1 + TEMA 2 + TEMA 3 + PERSISTENCE)
        ======================================================================== -->
   <script>
     /* ========================================================================
@@ -3255,25 +3744,25 @@
     const htmlEl = document.documentElement;
     const themeToggleBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
-    let activeModule = 'tema-2';
+    let activeModule = 'tema-1';
 
+    const TEMA1_ANCHORS = new Set(['adq-inicio', 'adq-contratos', 'adq-herramientas', 'adq-caso', 'adq-simulador', 'adq-quiz']);
     const TEMA2_ANCHORS = new Set(['inicio', 'fundamentos', 'etapas', 'simulador', 'liderazgo', 'conflictos', 'caso-software', 'diagnostico', 'quiz', 'criticas', 'referencias']);
     const TEMA3_ANCHORS = new Set(['evm-inicio', 'evm-variables', 'evm-formulas', 'evm-caso', 'evm-calculadora', 'evm-practica']);
 
     function switchModule(modId, updateHash = true, scrollTargetSelector = null) {
-      if (modId !== 'tema-2' && modId !== 'tema-3') modId = 'tema-2';
+      if (modId !== 'tema-1' && modId !== 'tema-2' && modId !== 'tema-3') modId = 'tema-1';
       activeModule = modId;
 
-      document.getElementById('view-tema-2').classList.toggle('active', modId === 'tema-2');
-      document.getElementById('view-tema-3').classList.toggle('active', modId === 'tema-3');
-
-      document.getElementById('tabBtnTema2').classList.toggle('active', modId === 'tema-2');
-      document.getElementById('tabBtnTema2').setAttribute('aria-selected', String(modId === 'tema-2'));
-      document.getElementById('tabBtnTema3').classList.toggle('active', modId === 'tema-3');
-      document.getElementById('tabBtnTema3').setAttribute('aria-selected', String(modId === 'tema-3'));
-
-      document.getElementById('subnavTema2').style.display = modId === 'tema-2' ? 'flex' : 'none';
-      document.getElementById('subnavTema3').style.display = modId === 'tema-3' ? 'flex' : 'none';
+      ['tema-1', 'tema-2', 'tema-3'].forEach((id, idx) => {
+        const isAct = id === modId;
+        const num = idx + 1;
+        document.getElementById(`view-${id}`).classList.toggle('active', isAct);
+        const btn = document.getElementById(`tabBtnTema${num}`);
+        btn.classList.toggle('active', isAct);
+        btn.setAttribute('aria-selected', String(isAct));
+        document.getElementById(`subnavTema${num}`).style.display = isAct ? 'flex' : 'none';
+      });
 
       try { localStorage.setItem('gpc-active-module', modId); } catch (e) {}
       if (updateHash && !scrollTargetSelector) {
@@ -3329,7 +3818,8 @@
       const pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
       progressBar.style.width = pct + '%';
 
-      const navEl = document.getElementById(activeModule === 'tema-2' ? 'subnavTema2' : 'subnavTema3');
+      const navId = activeModule === 'tema-1' ? 'subnavTema1' : (activeModule === 'tema-2' ? 'subnavTema2' : 'subnavTema3');
+      const navEl = document.getElementById(navId);
       if (!navEl) return;
       const anchors = Array.from(navEl.querySelectorAll('a'));
       let currentId = '';
@@ -3343,15 +3833,17 @@
 
     function syncFromHash() {
       const hash = (window.location.hash || '').replace(/^#/, '');
-      if (hash === 'tema-3' || TEMA3_ANCHORS.has(hash)) {
+      if (hash === 'tema-1' || TEMA1_ANCHORS.has(hash)) {
+        switchModule('tema-1', false, TEMA1_ANCHORS.has(hash) ? '#' + hash : null);
+      } else if (hash === 'tema-3' || TEMA3_ANCHORS.has(hash)) {
         switchModule('tema-3', false, TEMA3_ANCHORS.has(hash) ? '#' + hash : null);
       } else if (hash === 'tema-2' || TEMA2_ANCHORS.has(hash)) {
         switchModule('tema-2', false, TEMA2_ANCHORS.has(hash) ? '#' + hash : null);
       } else {
-        let savedMod = 'tema-2';
+        let savedMod = 'tema-1';
         try {
           const s = localStorage.getItem('gpc-active-module');
-          if (s === 'tema-2' || s === 'tema-3') savedMod = s;
+          if (s === 'tema-1' || s === 'tema-2' || s === 'tema-3') savedMod = s;
         } catch (e) {}
         switchModule(savedMod, true);
       }
@@ -4597,8 +5089,339 @@
     });
 
     /* ========================================================================
-       4. BOOT ALL MODULES
+       4. TEMA 1 — CONTRACTS SPECTRUM, T&M AUDIT SIMULATOR & PROCUREMENT QUIZ
        ======================================================================== */
+    const CONTRACTS_DATA = [
+      {
+        id: 0, tag: 'MENOR RIESGO COMPRADOR', name: 'Precio Fijo (Fixed Price)', sub: 'FFP · FPIF · FP-EPA',
+        colorVar: 'var(--s4)', softVar: 'var(--s4-soft)', borderVar: 'var(--s4-border)',
+        markerPct: 14, riskBadge: 'Riesgo Bajo para el Comprador', riskClass: 'tl-green',
+        when: 'Cuando el alcance y los requisitos están completamente definidos desde el inicio y no se esperan cambios grandes.',
+        riskText: 'El <strong>vendedor (proveedor)</strong> asume el riesgo de sobrecosto: si tarda más horas de las estimadas, él absorbe la diferencia salvo cambio formal de alcance.',
+        variants: [
+          '<strong>FFP (Precio Fijo Cerrado):</strong> monto total cerrado e inamovible salvo solicitud de cambio aprobada.',
+          '<strong>FPIF (Precio Fijo + Honorarios con Incentivos):</strong> agrega bonos por desempeño (costo, plazo o calidad) con precio techo.',
+          '<strong>FP-EPA (Ajuste Económico de Precio):</strong> para contratos multianuales sujetos a inflación o tipo de cambio.'
+        ],
+        controlFocus: 'Controlar cambios de alcance (para evitar adendas costosas) e inspeccionar la calidad final para que el proveedor no recorte pruebas por proteger su margen.'
+      },
+      {
+        id: 1, tag: 'HÍBRIDO ★ CASO EDUCONECTA 360', name: 'Tiempo y Materiales (T&M)', sub: 'Tarifa fija × horas reales',
+        colorVar: 'var(--amber)', softVar: 'var(--amber-soft)', borderVar: 'var(--amber-border)',
+        markerPct: 55, riskBadge: 'Riesgo Medio–Alto para el Comprador', riskClass: 'tl-amber',
+        when: 'Para servicios especializados, pruebas QA, soporte o aumento de personal (staff augmentation) cuando el volumen exacto de horas aún no está cerrado.',
+        riskText: 'El <strong>comprador (NovaTech)</strong> asume el riesgo de costo por volumen de horas. Si no existe verificación técnica ni techo máximo (NTE), cada hora extra o retrabajo sube la factura.',
+        variants: [
+          '<strong>Tarifa fija pactada:</strong> el precio por hora/perfil está fijado de antemano (aspecto de Precio Fijo).',
+          '<strong>Cantidad abierta:</strong> el costo total crece conforme se facturan horas (aspecto de Costos Reembolsables).',
+          '<strong>Cláusula NTE (Not-to-Exceed):</strong> techo máximo de horas o monto (ej. 1,200 h en EduConecta 360) con aprobación escrita previa.'
+        ],
+        controlFocus: 'Auditar timesheets cruzados con tickets/evidencias reales, monitorear el techo semanalmente, exigir aprobación escrita previa para horas extra y registrar bloqueos con fecha.'
+      },
+      {
+        id: 2, tag: 'MAYOR RIESGO COMPRADOR', name: 'Costos Reembolsables', sub: 'CPFF · CPIF · CPAF',
+        colorVar: 'var(--s2)', softVar: 'var(--s2-soft)', borderVar: 'var(--s2-border)',
+        markerPct: 88, riskBadge: 'Riesgo Alto para el Comprador', riskClass: 'tl-red',
+        when: 'Proyectos de I+D, alta incertidumbre técnica o alcance que cambiará significativamente durante la ejecución.',
+        riskText: 'El <strong>comprador</strong> reembolsa todos los costos reales legítimos más un honorario (ganancia). El vendedor tiene poco incentivo natural para ahorrar costos si no hay incentivos.',
+        variants: [
+          '<strong>CPFF (Costo + Honorarios Fijos):</strong> reembolso de costos autorizados + honorario fijo inicial.',
+          '<strong>CPIF (Costo + Incentivos):</strong> desviaciones compartidas según fórmula pactada (ej. 80/20 comprador/vendedor).',
+          '<strong>CPAF (Costo + Cumplimiento de Objetivos):</strong> honorario sujeto a evaluación de desempeño del comprador.'
+        ],
+        controlFocus: 'Auditorías financieras exhaustivas de cada gasto y comprobante legítimo, revisiones periódicas de desempeño y control estricto de elegibilidad de costos.'
+      }
+    ];
+
+    function selectContract(idx) {
+      document.getElementById('contractTabs').innerHTML = CONTRACTS_DATA.map((c, i) => `
+        <button type="button" class="contract-tab ${i === idx ? 'active' : ''}" role="tab" aria-selected="${i === idx}"
+          style="${i === idx ? `border-color:${c.colorVar};` : ''}" onclick="selectContract(${i})">
+          <span class="ct-tag" style="color:${c.colorVar}">${c.tag}</span>
+          <strong>${c.name}</strong>
+          <span class="ct-sub">${c.sub}</span>
+        </button>
+      `).join('');
+
+      const c = CONTRACTS_DATA[idx];
+      document.getElementById('spectrumMarker').style.left = c.markerPct + '%';
+      const badge = document.getElementById('spectrumRiskBadge');
+      badge.className = 'tl-pill ' + c.riskClass;
+      badge.textContent = c.riskBadge;
+
+      document.getElementById('contractDetailCard').innerHTML = `
+        <div class="grid-2">
+          <div>
+            <span class="realm-badge" style="background:${c.softVar}; color:${c.colorVar};">${c.name}</span>
+            <h3 style="margin:0 0 8px 0; font-size:1.14rem;">¿Cuándo se usa y quién asume el riesgo?</h3>
+            <p style="margin:0 0 10px 0; font-size:0.9rem; color:var(--ink-secondary);"><strong style="color:var(--ink);">Cuándo conviene:</strong> ${c.when}</p>
+            <p style="margin:0 0 12px 0; font-size:0.9rem; color:var(--ink-secondary);"><strong style="color:var(--ink);">Riesgo de costo:</strong> ${c.riskText}</p>
+            <div style="padding:11px 13px; border-radius:10px; background:var(--bg); border:1px solid var(--border); font-size:0.86rem;">
+              <strong style="color:var(--ink); display:block; margin-bottom:3px;">🎯 Foco de control del PM (§12.3):</strong>
+              <span style="color:var(--ink-secondary);">${c.controlFocus}</span>
+            </div>
+          </div>
+          <div>
+            <h4 style="margin:0 0 10px 0; font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; color:var(--ink-muted);">Variantes PMBOK® 6.ª Edición (pp. 471–472)</h4>
+            <ul style="margin:0; padding-left:18px; display:grid; gap:10px; font-size:0.89rem; color:var(--ink-secondary);">
+              ${c.variants.map(v => `<li>${v}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+
+    /* T&M Invoice Audit & Ceiling Simulator */
+    const AUDIT_PRESETS = {
+      educonecta: { cap: 1200, prev: 600, rate: 150, billed: 360, backed: 240, rework: 70 },
+      clean:      { cap: 1200, prev: 420, rate: 150, billed: 180, backed: 180, rework: 0 },
+      danger:     { cap: 1200, prev: 880, rate: 160, billed: 340, backed: 260, rework: 50 }
+    };
+
+    function applyAuditPreset(key) {
+      const p = AUDIT_PRESETS[key];
+      document.getElementById('audCap').value = p.cap;
+      document.getElementById('audPrev').value = p.prev;
+      document.getElementById('audRate').value = p.rate;
+      document.getElementById('audBilled').value = p.billed;
+      document.getElementById('audBacked').value = p.backed;
+      document.getElementById('audRework').value = p.rework;
+      document.querySelectorAll('[data-audit-preset]').forEach(b => b.classList.toggle('active', b.dataset.auditPreset === key));
+      updateAuditSimulator();
+    }
+
+    function loadAuditPresetAndScroll(key) {
+      applyAuditPreset(key);
+      document.getElementById('adq-simulador').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function bindAuditInputs() {
+      ['audCap', 'audPrev', 'audRate', 'audBilled', 'audBacked', 'audRework'].forEach(id => {
+        document.getElementById(id).addEventListener('input', () => {
+          document.querySelectorAll('[data-audit-preset]').forEach(b => b.classList.remove('active'));
+          updateAuditSimulator();
+        });
+      });
+    }
+
+    function updateAuditSimulator() {
+      const cap = Math.max(1, Number(document.getElementById('audCap').value) || 1);
+      const prev = Math.max(0, Number(document.getElementById('audPrev').value) || 0);
+      const rate = Math.max(0, Number(document.getElementById('audRate').value) || 0);
+      const billed = Math.max(0, Number(document.getElementById('audBilled').value) || 0);
+      const backed = Math.min(billed, Math.max(0, Number(document.getElementById('audBacked').value) || 0));
+      const rework = Math.min(backed, Math.max(0, Number(document.getElementById('audRework').value) || 0));
+
+      const unsupported = Math.max(0, billed - backed);
+      const validNet = Math.max(0, backed - rework);
+      const heldHours = unsupported + rework;
+
+      const billedMoney = billed * rate;
+      const validMoney = validNet * rate;
+      const savedMoney = heldHours * rate;
+
+      const totalIfBilled = prev + billed;
+      const totalAfterAudit = prev + validNet;
+      const pctCapBilled = (totalIfBilled / cap) * 100;
+      const pctCapAudit = (totalAfterAudit / cap) * 100;
+
+      const stUnsup = unsupported > 0 ? { cls: 'bad', badge: 'tl-red', lbl: 'Retener' } : { cls: 'good', badge: 'tl-green', lbl: 'OK' };
+      const stRework = rework > 0 ? { cls: 'warn', badge: 'tl-amber', lbl: 'Revisar' } : { cls: 'good', badge: 'tl-green', lbl: 'Sin retrabajo' };
+      const stCap = pctCapBilled >= 100 ? { cls: 'bad', badge: 'tl-red', lbl: '¡Rompe techo!' }
+        : pctCapBilled >= 80 ? { cls: 'warn', badge: 'tl-amber', lbl: 'Alerta > 80%' }
+        : { cls: 'good', badge: 'tl-green', lbl: 'Controlado' };
+
+      document.getElementById('auditKpiGrid').innerHTML = `
+        <div class="evm-kpi-tile good">
+          <div class="evm-kpi-top"><span class="evm-kpi-code">Horas aprobables</span><span class="tl-pill tl-green">A pago</span></div>
+          <div class="evm-kpi-val">${validNet} h</div>
+          <div class="evm-kpi-sub">Monto válido: ${fmtSol(validMoney)}</div>
+        </div>
+        <div class="evm-kpi-tile ${stUnsup.cls}">
+          <div class="evm-kpi-top"><span class="evm-kpi-code">Sin respaldo QA</span><span class="tl-pill ${stUnsup.badge}">${stUnsup.lbl}</span></div>
+          <div class="evm-kpi-val">${unsupported} h</div>
+          <div class="evm-kpi-sub">Retención directa: ${fmtSol(unsupported * rate)}</div>
+        </div>
+        <div class="evm-kpi-tile ${stRework.cls}">
+          <div class="evm-kpi-top"><span class="evm-kpi-code">Retrabajo observado</span><span class="tl-pill ${stRework.badge}">${stRework.lbl}</span></div>
+          <div class="evm-kpi-val">${rework} h</div>
+          <div class="evm-kpi-sub">Bajo revisión: ${fmtSol(rework * rate)}</div>
+        </div>
+        <div class="evm-kpi-tile good">
+          <div class="evm-kpi-top"><span class="evm-kpi-code">Ahorro / Protección AC</span><span class="tl-pill tl-green">Auditoría</span></div>
+          <div class="evm-kpi-val">${fmtSol(savedMoney)}</div>
+          <div class="evm-kpi-sub">Factura original: ${fmtSol(billedMoney)}</div>
+        </div>
+        <div class="evm-kpi-tile ${stCap.cls}">
+          <div class="evm-kpi-top"><span class="evm-kpi-code">Techo sin auditar</span><span class="tl-pill ${stCap.badge}">${stCap.lbl}</span></div>
+          <div class="evm-kpi-val">${pctCapBilled.toFixed(1)}%</div>
+          <div class="evm-kpi-sub">${totalIfBilled} h de ${cap} h pactadas</div>
+        </div>
+        <div class="evm-kpi-tile ${pctCapAudit >= 85 ? 'warn' : 'good'}">
+          <div class="evm-kpi-top"><span class="evm-kpi-code">Techo tras auditoría</span><span class="tl-pill ${pctCapAudit >= 85 ? 'tl-amber' : 'tl-green'}">Restan ${Math.max(0, cap - totalAfterAudit)} h</span></div>
+          <div class="evm-kpi-val">${pctCapAudit.toFixed(1)}%</div>
+          <div class="evm-kpi-sub">${totalAfterAudit} h acumuladas reales</div>
+        </div>
+      `;
+
+      // Stacked bar
+      const pValid = billed > 0 ? (validNet / billed) * 100 : 100;
+      const pRework = billed > 0 ? (rework / billed) * 100 : 0;
+      const pUnsup = billed > 0 ? (unsupported / billed) * 100 : 0;
+      document.getElementById('auditStackBar').innerHTML = `
+        ${validNet > 0 ? `<div class="hours-seg" style="width:${pValid.toFixed(1)}%; background:var(--s4);">${pValid >= 14 ? validNet + ' h' : ''}</div>` : ''}
+        ${rework > 0 ? `<div class="hours-seg" style="width:${pRework.toFixed(1)}%; background:var(--amber);">${pRework >= 12 ? rework + ' h' : ''}</div>` : ''}
+        ${unsupported > 0 ? `<div class="hours-seg" style="width:${pUnsup.toFixed(1)}%; background:var(--s2);">${pUnsup >= 14 ? unsupported + ' h' : ''}</div>` : ''}
+      `;
+      document.getElementById('auditStackLegend').innerHTML = `
+        <span><i style="background:var(--s4)"></i> Válidas netas: ${validNet} h (${pValid.toFixed(0)}%)</span>
+        <span><i style="background:var(--amber)"></i> Retrabajo observado: ${rework} h (${pRework.toFixed(0)}%)</span>
+        <span><i style="background:var(--s2)"></i> Sin respaldo: ${unsupported} h (${pUnsup.toFixed(0)}%)</span>
+      `;
+
+      const capBadge = document.getElementById('auditCapPctBadge');
+      capBadge.className = 'tl-pill ' + stCap.badge;
+      capBadge.textContent = `${pctCapBilled.toFixed(1)}% sin auditar → ${pctCapAudit.toFixed(1)}% auditado`;
+      document.getElementById('auditCapNumbers').textContent = `${totalAfterAudit} h / ${cap} h`;
+      const capBar = document.getElementById('auditCapBar');
+      capBar.style.width = Math.min(100, pctCapAudit).toFixed(1) + '%';
+      capBar.style.background = pctCapAudit >= 90 ? 'var(--s2)' : (pctCapAudit >= 70 ? 'var(--amber)' : 'var(--s4)');
+
+      let verdict = '';
+      if (unsupported === 0 && rework === 0) {
+        verdict = `Factura limpia: las ${billed} h cuentan con timesheets y evidencias técnicas consistentes. Se aprueba el pago de ${fmtSol(validMoney)} y se mantiene seguimiento semanal frente al techo de ${cap} h (quedan ${Math.max(0, cap - totalAfterAudit)} h disponibles).`;
+      } else {
+        verdict = `Aprobar solo ${validNet} h válidas (${fmtSol(validMoney)}), retener ${unsupported} h sin sustento y someter a revisión contractual ${rework} h de retrabajo. Esta auditoría evita un gasto sin respaldo de ${fmtSol(savedMoney)} que deterioraría el AC y el CPI. Exigir timesheets detallados, logs QA, aprobaciones escritas previas y control semanal del techo de ${cap} h.`;
+      }
+      document.getElementById('auditVerdictText').textContent = verdict;
+    }
+
+    /* Tema 1 Quiz (5 scenarios) */
+    const ADQ_QUIZ_DATA = [
+      {
+        q: 'En un contrato de Tiempo y Materiales (T&M) con tarifa por hora para servicios de QA, ¿quién asume principalmente el riesgo de sobrecosto si aumenta la cantidad de horas facturadas?',
+        opts: [
+          'El proveedor (vendedor), porque la tarifa por hora es fija.',
+          'El comprador (cliente), porque asume el costo de cada hora adicional si no ejerce control estricto.',
+          'Ninguno; el riesgo se elimina automáticamente en contratos híbridos.',
+          'Solo el equipo de finanzas al cierre del año.'
+        ],
+        correct: 1,
+        why: 'Correcto. En un contrato T&M la tarifa es fija pero las horas son abiertas: el comprador asume el riesgo de sobrecosto si no controla avance, evidencias y techo máximo (NTE).'
+      },
+      {
+        q: 'QualityLab factura 360 horas, pero solo 240 tienen evidencia técnica y 70 corresponden a repruebas por defectos que ya había declarado corregidos. ¿Cuál es la primera acción correcta según PMBOK® §12.3?',
+        opts: [
+          'Pagar la factura completa para no dañar la relación y revisar el próximo mes.',
+          'Rescindir el contrato unilateralmente sin documentar hallazgos.',
+          'Auditar la factura cruzando timesheets con logs de ejecución y tickets de QA, aprobar solo horas válidas, retener las 120 h sin respaldo y revisar las 70 h de retrabajo.',
+          'Descontar arbitrariamente el 50 % sin pedir sustentos.'
+        ],
+        correct: 2,
+        why: 'Exacto. Controlar las Adquisiciones exige auditoría objetiva y respaldo documental antes de aprobar pagos: pagar solo lo sustentado protege el presupuesto y evita disputas sin pruebas.'
+      },
+      {
+        q: 'El proveedor alega al final del mes que todo su exceso de horas se debe a demoras del equipo interno de desarrollo. ¿Qué práctica preventiva evita este conflicto recurrente?',
+        opts: [
+          'Discutir verbalmente al final de cada mes quién tuvo la culpa.',
+          'Llevar una bitácora compartida de bloqueos con fecha registrada apenas ocurran las demoras, junto con reportes semanales de horas vs. techo.',
+          'Eliminar el techo de 1,200 horas para darle flexibilidad al proveedor.',
+          'Esperar al cierre del proyecto para revisar los retrasos.'
+        ],
+        correct: 1,
+        why: 'Correcto. Registrar bloqueos con fecha en tiempo real (y no al cierre del mes) elimina excusas subjetivas y da base objetiva para la administración de reclamaciones.'
+      },
+      {
+        q: 'Según el contrato T&M, las horas extraordinarias requieren autorización previa. El proveedor ejecuta 40 horas extra durante un fin de semana sin avisar y las incluye en la factura. ¿Qué corresponde?',
+        opts: [
+          'Aprobarlas automáticamente porque ayudaron a avanzar.',
+          'Objetar el cobro mediante el control de cambios del contrato y exigir aprobación escrita previa del director de proyecto para cualquier hora extraordinaria futura.',
+          'Pagarlas como bono de incentivo CPIF.',
+          'Reemplazar el contrato T&M por Costos Reembolsables sin techo.'
+        ],
+        correct: 1,
+        why: 'En PMBOK §12.3 todos los cambios y autorizaciones contractuales deben documentarse y aprobarse formalmente por escrito antes de ejecutarse.'
+      },
+      {
+        q: '¿En qué situación resulta más adecuado un contrato de Precio Fijo Cerrado (FFP) en lugar de Tiempo y Materiales (T&M)?',
+        opts: [
+          'Cuando los requisitos están ambiguos y cambiarán cada semana.',
+          'Cuando el alcance y los entregables están perfectamente definidos y el comprador desea transferir el riesgo de costo al vendedor.',
+          'Cuando se necesita contratar horas flexibles de soporte sin alcance definido.',
+          'En proyectos experimentales de investigación pura.'
+        ],
+        correct: 1,
+        why: 'Exacto. FFP es el contrato con menor riesgo de costo para el comprador, siempre que el alcance esté claro y estable desde el inicio.'
+      }
+    ];
+    let adqQuizIdx = 0, adqQuizScore = 0, adqQuizAnswered = false;
+    const adqQuizStatus = ADQ_QUIZ_DATA.map(() => null);
+
+    function renderAdqQuiz() {
+      const shell = document.getElementById('adqQuizShell');
+      if (adqQuizIdx >= ADQ_QUIZ_DATA.length) {
+        const pct = Math.round((adqQuizScore / ADQ_QUIZ_DATA.length) * 100);
+        shell.innerHTML = `
+          <div style="text-align:center; padding:16px 8px;">
+            <span class="stage-pill-badge" style="background:var(--amber-soft); color:var(--amber); border:1px solid var(--amber-border);">RESULTADO TEMA 1</span>
+            <h3 style="font-family:var(--font-serif); font-size:2rem; margin:12px 0 8px 0;">${adqQuizScore} / ${ADQ_QUIZ_DATA.length} correctas (${pct}%)</h3>
+            <p style="color:var(--ink-secondary); max-width:52ch; margin:0 auto 20px auto;">${pct === 100 ? '¡Dominio total de Adquisiciones y control de contratos T&M!' : 'Buen avance. Repasa los tipos de contrato y las evidencias exigibles.'}</p>
+            <button class="btn-primary" type="button" onclick="resetAdqQuiz()">↺ Reintentar Quiz</button>
+          </div>
+        `;
+        return;
+      }
+      const item = ADQ_QUIZ_DATA[adqQuizIdx];
+      const letters = ['A', 'B', 'C', 'D'];
+      shell.innerHTML = `
+        <div class="quiz-top">
+          <div style="font-family:var(--font-mono); font-size:0.78rem; font-weight:700; color:var(--ink-muted);">PREGUNTA ${adqQuizIdx + 1} DE ${ADQ_QUIZ_DATA.length} · PUNTAJE: ${adqQuizScore}</div>
+          <div class="quiz-dots">${ADQ_QUIZ_DATA.map((_, i) => `<span class="quiz-dot ${adqQuizStatus[i] || (i === adqQuizIdx ? 'current' : '')}"></span>`).join('')}</div>
+        </div>
+        <p class="quiz-scenario">${item.q}</p>
+        <div class="quiz-options">
+          ${item.opts.map((opt, oi) => `<button type="button" class="quiz-opt" id="adqopt-${oi}" onclick="answerAdqQuiz(${oi})"><span class="quiz-letter">${letters[oi]}</span><span>${opt}</span></button>`).join('')}
+        </div>
+        <div class="quiz-feedback" id="adqQuizFeedback"></div>
+        <div style="margin-top:16px; display:flex; justify-content:flex-end;">
+          <button type="button" class="btn-primary" id="adqQuizNextBtn" style="display:none;" onclick="nextAdqQuiz()">${adqQuizIdx === ADQ_QUIZ_DATA.length - 1 ? 'Ver resultado final →' : 'Siguiente pregunta →'}</button>
+        </div>
+      `;
+      adqQuizAnswered = false;
+    }
+
+    function answerAdqQuiz(choice) {
+      if (adqQuizAnswered) return;
+      adqQuizAnswered = true;
+      const item = ADQ_QUIZ_DATA[adqQuizIdx];
+      const isRight = choice === item.correct;
+      if (isRight) adqQuizScore++;
+      adqQuizStatus[adqQuizIdx] = isRight ? 'correct' : 'wrong';
+      item.opts.forEach((_, oi) => {
+        const btn = document.getElementById(`adqopt-${oi}`);
+        btn.disabled = true;
+        if (oi === item.correct) btn.classList.add('is-correct');
+        else if (oi === choice && !isRight) btn.classList.add('is-wrong');
+      });
+      const fb = document.getElementById('adqQuizFeedback');
+      fb.style.background = isRight ? 'var(--s4-soft)' : 'var(--s2-soft)';
+      fb.style.borderColor = isRight ? 'var(--s4-border)' : 'var(--s2-border)';
+      fb.innerHTML = `<strong style="color:${isRight ? 'var(--s4)' : 'var(--s2)'}">${isRight ? '✓ ¡Correcto!' : '✕ Respuesta incorrecta.'}</strong> ${item.why}`;
+      fb.classList.add('show');
+      document.getElementById('adqQuizNextBtn').style.display = 'inline-flex';
+    }
+    function nextAdqQuiz() { adqQuizIdx++; renderAdqQuiz(); }
+    function resetAdqQuiz() { adqQuizIdx = 0; adqQuizScore = 0; for (let i = 0; i < adqQuizStatus.length; i++) adqQuizStatus[i] = null; renderAdqQuiz(); }
+
+    /* ========================================================================
+       5. BOOT ALL MODULES (TEMAS 1, 2 Y 3)
+       ======================================================================== */
+    // Boot Tema 1
+    selectContract(1); // Highlight T&M by default (EduConecta 360)
+    bindAuditInputs();
+    applyAuditPreset('educonecta');
+    renderAdqQuiz();
+
     // Boot Tema 2
     selectStage(0);
     renderSimDiagram();
